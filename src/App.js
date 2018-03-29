@@ -19,6 +19,9 @@ class App extends Component {
     this.setState({
       signups: [...this.state.signups, newSignup]
     })
+    name.value = ""
+    email.value = ""
+    name.focus()
   }
 
   render() {
@@ -30,10 +33,11 @@ class App extends Component {
             <input ref="email" type="text" placeholder="Email"/>
             <button>Sign Up</button>
           </form>
+          <h3>Number of signups: {signups.length}</h3>
           <ul>
             {signups.map((person, index) => {
               return (
-                <li key={index}>{person.name}</li>
+                <li key={index} onClick={() => {console.log(person)}}>{person.name}</li>
               )
             })}
           </ul>
