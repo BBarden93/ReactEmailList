@@ -13,8 +13,12 @@ class App extends Component {
 
   handleFormSubmit(evt) {
     evt.preventDefault()
-    console.log(this.refs.name.value)
-
+    const {name, email} = this.refs
+    const newSignup = {name: name.value, email: email.value}
+    
+    this.setState({
+      signups: [...this.state.signups, newSignup]
+    })
   }
 
   render() {
