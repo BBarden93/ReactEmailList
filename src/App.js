@@ -11,17 +11,28 @@ class App extends Component {
     ]
   }
 
+  handleFormSubmit(evt) {
+    evt.preventDefault()
+    console.log(this.refs.name.value)
+
+  }
+
   render() {
     const {signups} = this.state
     return (
       <div className="App">
-        <ul>
-          {signups.map((person, index) => {
-            return (
-              <li key={index}>{person.name}</li>
-            )
-          })}
-        </ul>
+          <form onSubmit={this.handleFormSubmit.bind(this)}>
+            <input ref="name" type="text" placeholder="Name"/>
+            <input ref="email" type="text" placeholder="Email"/>
+            <button>Sign Up</button>
+          </form>
+          <ul>
+            {signups.map((person, index) => {
+              return (
+                <li key={index}>{person.name}</li>
+              )
+            })}
+          </ul>
       </div>
     );
   }
